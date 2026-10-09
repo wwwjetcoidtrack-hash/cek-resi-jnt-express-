@@ -1,1 +1,205 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
+<title>Cek resi</title>
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f5f7;
+  margin:0;
+  padding:24px
+}
+
+.card{
+  max-width:520px;
+  margin:30px auto;
+  background:#fff;
+  padding:22px;
+  border-radius:16px;
+  box-shadow:0 4px 18px #0001
+}
+
+.demo{
+  background:#fff3cd;
+  border:1px solid #ffe69c;
+  padding:10px;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:14px
+}
+
+h1{
+  font-size:24px
+}
+
+input{
+  box-sizing:border-box;
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+  margin:10px 0
+}
+
+button{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  background:#dc3545;
+  color:white;
+  font-size:16px;
+  font-weight:bold
+}
+
+.result{
+  margin-top:16px;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  line-height:1.6
+}
+
+small{
+  color:#666
+}
+
+.data{
+  margin-top:15px;
+  padding:12px;
+  background:#f7f7f7;
+  border-radius:10px
+}
+
+.data b{
+  display:inline-block;
+  width:110px
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="demo">
+CEK RESI J&T EXPRESS.
+</div>
+
+<h1>Lacak Paket</h1>
+
+<p>Masukkan nomor resi.</p>
+
+<input id="resi" value="Masukan nomor resi">
+
+<button onclick="lacak()">Lacak</button>
+
+<div class="result" id="hasil">
+
+<b>Status Paket</b>
+
+<div class="data">
+
+<div><b>Resi:</b> <span id="tResi"></span></div>
+
+<div><b>Penerima:</b> <span id="tPenerima"></span></div>
+
+<div><b>Pengirim:</b> <span id="tPengirim"></span></div>
+
+<div><b>Tujuan:</b> <span id="tTujuan"></span></div>
+
+<div><b>Berat:</b> <span id="tBerat"></span></div>
+
+<div><b>Status:</b> <span id="tStatus"></span></div>
+
+<div><b>Tanggal:</b> <span id="tTanggal"></span></div>
+
+</div>
+
+<br>
+
+<b>Riwayat Paket</b>
+
+<p id="tRiwayat"></p>
+
+<small>
+Hanya nomor pelacakan anda yang akan di kirim ke J&T.
+</small>
+
+</div>
+
+</div>
+
+<script>
+
+/* =================================
+   DATA SIMULASI
+   EDIT TEKS DI BAGIAN INI SAJA
+   ================================= */
+
+const DATA = {
+
+  resi: "JD0344898918",
+
+  penerima: "JEPIS",
+
+  pengirim: "MHMMD FIKRI",
+
+  tujuan: "DUMAI",
+
+  berat: "12KG",
+
+  status: "Paket sedang diproses",
+
+  tanggal: "09 Oktober 2026",
+
+  riwayat:
+  "09 Okt 2026 — Paket diterima di Drop point.<br>" +
+  "09 Okt 2026 — Paket sedang diproses.<br>" +
+  "08 Okt 2026 — Menunggu proses pengiriman."
+
+};
+
+
+/* =================================
+   MENAMPILKAN DATA
+   ================================= */
+
+document.getElementById("resi").value = DATA.resi;
+
+document.getElementById("tResi").textContent = DATA.resi;
+document.getElementById("tPenerima").textContent = DATA.penerima;
+document.getElementById("tPengirim").textContent = DATA.pengirim;
+document.getElementById("tTujuan").textContent = DATA.tujuan;
+document.getElementById("tBerat").textContent = DATA.berat;
+document.getElementById("tStatus").textContent = DATA.status;
+document.getElementById("tTanggal").textContent = DATA.tanggal;
+
+document.getElementById("tRiwayat").innerHTML = DATA.riwayat;
+
+
+/* =================================
+   TOMBOL LACAK
+   ================================= */
+
+function lacak(){
+
+  const r =
+  document.getElementById("resi")
+  .value
+  .trim() || DATA.resi;
+
+  document.getElementById("tResi")
+  .textContent = r;
+
+}
+
+</script>
+
+</body>
+</html>
